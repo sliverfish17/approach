@@ -7,6 +7,7 @@ import { PAGES } from "@/types/Pages";
 import { FirebaseAuthError } from "@/types/Firebase";
 import toast from "react-hot-toast";
 import { RegistrationFormEntries } from "@/types/Forms";
+import { Button } from "@/components/UI/Button";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -35,10 +36,10 @@ const Register = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center h-[calc(100dvh-128px)]">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="p-6 bg-white shadow-md rounded"
+        className="p-6 bg-white shadow-md rounded max-w-lg"
       >
         <h2 className="text-2xl mb-4">Register</h2>
         <input
@@ -69,9 +70,9 @@ const Register = () => {
           <p className="text-red-500">{errors.confirmPassword.message}</p>
         )}
 
-        <button type="submit" className="bg-blue-500 text-white p-2 w-full">
+        <Button type="submit" className="w-full">
           Register
-        </button>
+        </Button>
       </form>
     </div>
   );

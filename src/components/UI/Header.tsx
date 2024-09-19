@@ -4,6 +4,7 @@ import { logoutUser } from "@/services/auth";
 import { useNavigate } from "react-router-dom";
 import { PAGES } from "@/types/Pages";
 import toast from "react-hot-toast";
+import { Button } from "./Button";
 
 export const Header = () => {
   const [user, setUser] = useState<null | { email: string }>(null);
@@ -28,32 +29,23 @@ export const Header = () => {
 
   return (
     <header className="flex justify-between items-center p-4 bg-gray-100 shadow-md">
-      <h1 className="text-xl font-bold">MyApp</h1>
+      <h1 className="text-xl font-bold">Kolotenko</h1>
       <div>
         {user ? (
           <div className="flex items-center">
             <span className="mr-4">{user.email}</span>
-            <button
-              onClick={handleLogout}
-              className="bg-red-500 text-white p-2 rounded"
-            >
+            <Button color="red" onClick={handleLogout}>
               Logout
-            </button>
+            </Button>
           </div>
         ) : (
-          <div>
-            <button
-              onClick={() => navigate(PAGES.SIGN_IN)}
-              className="bg-blue-500 text-white p-2 mr-2 rounded"
-            >
+          <div className="flex gap-2">
+            <Button onClick={() => navigate(PAGES.SIGN_IN)} color="red">
               Login
-            </button>
-            <button
-              onClick={() => navigate(PAGES.SIGN_UP)}
-              className="bg-green-500 text-white p-2 rounded"
-            >
+            </Button>
+            <Button color="blue" onClick={() => navigate(PAGES.SIGN_UP)}>
               Sign Up
-            </button>
+            </Button>
           </div>
         )}
       </div>
